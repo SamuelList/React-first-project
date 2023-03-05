@@ -4,14 +4,20 @@
   background-color: #95dada;
   border: 1px solid grey;
   border-radius: 5px;
-  padding: 25px;
+  padding: 15px;
+  margin: 5px;
   cursor: pointer;
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
+  box-shadow: 0 5px 11px rgba(33, 33, 33, .2);
   transform: translateZ(0);
-  transition: transform 0.25s ease-out;
+  /* transition: transform 0.55s ease-out; */
+  transition: all 0.15s ease-in-out;
 }
 
 .card-container:hover {
-  transform: scale(1.05);
+  transform: scale(1.075);
+  box-shadow: none;
+  background-color: #9feeee;
+  border-radius: 20px;
 }
