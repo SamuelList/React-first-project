@@ -39,7 +39,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        
+        <h1 className="app-title">The People</h1>
         <SearchBox
           onChangeHandler={onSearchChange}
           placeholder='Search People'

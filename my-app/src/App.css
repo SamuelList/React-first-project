@@ -12,3 +12,13 @@ body {
       rgba(0, 128, 128, 1) 100%);
   text-align: center;
 }
+ .app-title {
+  color: #abffff;
+  font-size: 5rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+ }
