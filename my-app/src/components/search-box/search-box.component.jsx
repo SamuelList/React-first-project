@@ -5,12 +5,14 @@ import './search-box.styles.css';
 class SearchBox extends Component {
   render() {
     const { onChangeHandler } = this.props;
+    const { placeholder } = this.props;
+    const { className } = this.props;
 
     return (
       <input
-        className={`search-box ${this.props.className}`}
+        className={`search-box ${className}`}
         type="search"
-        placeholder={this.props.placeholder}
+        placeholder={placeholder}
         onChange={onChangeHandler}
       />
     );
