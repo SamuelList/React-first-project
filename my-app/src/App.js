@@ -5,20 +5,25 @@ import SearchBox from "./components/search-box/search-box.component";
 import "./App.css";
 
 const App = () => {
-  const [searchField, setSearchField] = useState('');
+  const [searchField, setSearchField] = useState("");
   const [monsters, setMonsters] = useState([]);
+  const [filteredMonster, setFilteredMonster] = useState(monsters);
 
-  fetch("https://jsonplaceholder.typicode.com/users")
-    .then((response) => response.json())
-    .then((users) => setMonsters(users));
+
+  console.log('rendered')
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((users) => setMonsters(users));
+  }, []);
 
   useEffect(() => {
-    
-  }, [monsters]);
-
-  const filteredMonster = monsters.filter((monster) => {
+    const newFilteredMonster = monsters.filter((monster) => {
       return monster.name.toLocaleLowerCase().includes(searchField);
     });
+
+    setFilteredMonster(newFilteredMonster);
+  }, [monsters, searchField]);
 
   const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLocaleLowerCase();
@@ -39,54 +44,6 @@ const App = () => {
   );
 };
 
-// class App extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       monsters: [],
-//       searchField: "",
-//     };
-//   }
 
-  // componentDidMount() {
-  //   fetch("https://jsonplaceholder.typicode.com/users")
-  //     .then((response) => response.json())
-  //     .then((users) =>
-  //       this.setState(() => {
-  //         return { monsters: users };
-  //       })
-  //     );
-  // }
-
-//   onSearchChange = (event) => {
-//     const searchField = event.target.value.toLocaleLowerCase();
-//     this.setState(() => {
-//       return { searchField };
-//     });
-//   };
-
-//   render() {
-//     const { monsters, searchField } = this.state;
-//     const { onSearchChange } = this;
-
-//     const filteredMonster = monsters.filter((monster) => {
-//       return monster.name.toLocaleLowerCase().includes(searchField);
-//     });
-
-//     return (
-//       <div className="App">
-//         <h1 className="app-title">The People</h1>
-
-//         <SearchBox
-//           onChangeHandler={onSearchChange}
-//           placeholder="Search People"
-//           className="monsters-search-box"
-//         />
-
-//         <CardList monsters={filteredMonster} />
-//       </div>
-//     );
-//   }
-// }
 
 export default App;
