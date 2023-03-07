@@ -6,6 +6,7 @@ import "./App.css";
 
 const App = () => {
   const [searchField, setSearchField] = useState("");
+  const [title, setTitle] = useState('')
   const [monsters, setMonsters] = useState([]);
   const [filteredMonster, setFilteredMonster] = useState(monsters);
 
@@ -29,6 +30,11 @@ const App = () => {
     const searchFieldString = event.target.value.toLocaleLowerCase();
     setSearchField(searchFieldString);
   };
+
+  const onTitleChange = (event) => {
+    const searchFieldString = event.target.value.toLocaleLowerCase();
+    setTitle(searchFieldString);
+  };
   return (
     <div className="App">
       <h1 className="app-title">The People</h1>
@@ -37,6 +43,12 @@ const App = () => {
         onChangeHandler={onSearchChange}
         placeholder="Search People"
         className="monsters-search-box"
+      />
+      <br></br>
+      <SearchBox
+        onChangeHandler={onTitleChange}
+        placeholder="Title change"
+        className="title-search-box"
       />
 
       <CardList monsters={filteredMonster} />
